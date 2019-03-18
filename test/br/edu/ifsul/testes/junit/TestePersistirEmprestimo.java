@@ -7,7 +7,9 @@ package br.edu.ifsul.testes.junit;
 
 import br.edu.ifsul.jpa.EntityManagerUtil;
 import br.edu.ifsul.modelo.Genero;
-import br.edu.ifsul.modelo.Livro;
+import br.edu.ifsul.modelo.Emprestimo;
+import br.edu.ifsul.modelo.Pessoa;
+import java.util.Calendar;
 import javax.persistence.EntityManager;
 import org.junit.After;
 import org.junit.Assert;
@@ -18,10 +20,10 @@ import org.junit.Test;
  *
  * @author 201613260113
  */
-public class TestePersistirLivro {
+public class TestePersistirEmprestimo {
     EntityManager em;
 
-    public TestePersistirLivro() {
+    public TestePersistirEmprestimo() {
     }
 
     @Before
@@ -38,11 +40,13 @@ public class TestePersistirLivro {
     public void teste(){
         boolean erro = false;
         try {
-            Livro obj = new Livro();
-            obj.setTitulo("O teste");
-            obj.setIsbn("123456789012");
-            obj.setAutor("Testador do Teste");
-            obj.setGenero(em.find(Genero.class, 1));
+            Emprestimo obj = new Emprestimo();
+            obj.setCliente(em.find(Pessoa.class, 1));
+            obj.setFuncionario(em.find(Pessoa.class, 2));
+            Calendar cal = Calendar.getInstance();
+            obj.setDataEmprestimo(cal);
+            obj.setDataEfetuadaDevolucao(cal);
+            obj.setDataPrevistaDevolucao(cal);
             em.getTransaction().begin();
             em.persist(obj);
             em.getTransaction().commit();

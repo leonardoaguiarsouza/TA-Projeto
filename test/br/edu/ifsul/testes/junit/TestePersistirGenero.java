@@ -7,7 +7,6 @@ package br.edu.ifsul.testes.junit;
 
 import br.edu.ifsul.jpa.EntityManagerUtil;
 import br.edu.ifsul.modelo.Genero;
-import java.util.Calendar;
 import javax.persistence.EntityManager;
 import org.junit.After;
 import org.junit.Assert;

@@ -7,7 +7,8 @@ package br.edu.ifsul.testes.junit;
 
 import br.edu.ifsul.jpa.EntityManagerUtil;
 import br.edu.ifsul.modelo.Genero;
-import br.edu.ifsul.modelo.Livro;
+import br.edu.ifsul.modelo.Pessoa;
+import java.util.Calendar;
 import javax.persistence.EntityManager;
 import org.junit.After;
 import org.junit.Assert;
@@ -18,10 +19,10 @@ import org.junit.Test;
  *
  * @author 201613260113
  */
-public class TestePersistirLivro {
+public class TestePersistirPessoa {
     EntityManager em;
 
-    public TestePersistirLivro() {
+    public TestePersistirPessoa() {
     }
 
     @Before
@@ -38,11 +39,14 @@ public class TestePersistirLivro {
     public void teste(){
         boolean erro = false;
         try {
-            Livro obj = new Livro();
-            obj.setTitulo("O teste");
-            obj.setIsbn("123456789012");
-            obj.setAutor("Testador do Teste");
-            obj.setGenero(em.find(Genero.class, 1));
+            Pessoa obj = new Pessoa();
+            obj.setNome("Bruno");
+            obj.setTipo("f");
+            obj.setCpf("02517532044");
+            obj.setLogin("baguiar");
+            obj.setSenha("12345");
+            obj.setTelefone("54992433633");
+            //obj.setGenero(em.find(Genero.class, 1));
             em.getTransaction().begin();
             em.persist(obj);
             em.getTransaction().commit();

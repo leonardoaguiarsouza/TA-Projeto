@@ -35,9 +35,9 @@ public class Pessoa implements Serializable{
     @Column(name = "nome", nullable = false, length = 30)
     private String nome;
     @NotNull(message = "O telefone não pode ser nulo")
-    @Length(max = 10, message = "O telefone não pode ter mais que {max} caracteres")
+    @Length(max = 13, message = "O telefone não pode ter mais que {max} caracteres")
     @NotBlank(message = "O telefone não pode ser em branco")
-    @Column(name = "telefone", nullable = false, length = 10)
+    @Column(name = "telefone", nullable = false, length = 13)
     private String telefone;
     @NotNull(message = "O cpf não pode ser nulo")
     @Length(max = 11, message = "O cpf não pode ter mais que {max} caracteres")
