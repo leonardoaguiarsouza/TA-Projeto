@@ -43,6 +43,11 @@ public class Emprestimo implements Serializable{
     @JoinColumn(name = "funcionario", referencedColumnName = "id", nullable = false)
     @ForeignKey(name = "fk_emprestimo_funcionario")
     private Pessoa funcionario;
+    @NotNull(message = "O exemplar deve ser informado")
+    @OneToOne
+    @JoinColumn(name = "exemplar", referencedColumnName = "id", nullable = false)
+    @ForeignKey(name = "fk_emprestimo_exemplar")
+    private Exemplar exemplar;
     @Column(name = "reserva")
     private Boolean reserva;
     @Temporal(TemporalType.DATE)    
@@ -151,6 +156,20 @@ public class Emprestimo implements Serializable{
      */
     public void setDataEfetuadaDevolucao(Calendar dataEfetuadaDevolucao) {
         this.dataEfetuadaDevolucao = dataEfetuadaDevolucao;
+    }
+
+    /**
+     * @return the exemplar
+     */
+    public Exemplar getExemplar() {
+        return exemplar;
+    }
+
+    /**
+     * @param exemplar the exemplar to set
+     */
+    public void setExemplar(Exemplar exemplar) {
+        this.exemplar = exemplar;
     }
 
     
